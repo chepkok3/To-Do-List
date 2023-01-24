@@ -11,7 +11,7 @@ const taskArray = [
     index: 0,
   },
   {
-    description: 'Phsycal exercise',
+    description: 'Physical exercise',
     completed: false,
     index: 1,
   },
@@ -24,7 +24,7 @@ const taskArray = [
 
 taskList.innerHTML = `
   <article>
-    <h2>Today's todo </h2>
+    <h2>Today's To Do </h2>
     <iconify-icon icon="bx:refresh"></iconify-icon>
   </article>
   <hr>
@@ -46,6 +46,5 @@ taskArray.forEach((task) => {
     <hr> 
       </div
       `;
-
   taskList.appendChild(toDoTask);
 });
