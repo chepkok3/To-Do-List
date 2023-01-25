@@ -11,21 +11,47 @@
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
-    <script
-      src="https://kit.fontawesome.com/a1e854484d.js"
-      crossorigin="anonymous"
-    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <script defer src="main.js"></script>
   </head>
   <body>
     <main class="main-content">
-      <section class="to-do">
-        <div class="todo-container">
-          <ul class="task-list"></ul>
-          <div class="completed">
-            <button class="delete-tasks">Clear all completed</button>
-          </div>
+      <section id="to-do" class="to-do">
+        <header class="todo-header">
+          <h1>Today's To Do</h1>
+          <button class="arrow-rotate">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </header>
+
+        <!-- adding to the list -->
+        <form id="todo-form" class="todo-form">
+          <input
+            type="text"
+            id="list-input"
+            name="list-input"
+            class="list-input"
+            placeholder="Add your list..."
+          /><button
+            class="input-btn"
+            aria-label="add new task"
+            title="hit enter to submit task"
+          >
+            <i class="fa fa-arrow-turn-down"></i>
+          </button>
+        </form>
+
+        <!-- section for adding the todo list-->
+
+        <ul class="task-list"></ul>
+
+        <!-- completed task button -->
+        <div class="completed">
+          <button class="delete-tasks">Clear all completed</button>
         </div>
       </section>
     </main>

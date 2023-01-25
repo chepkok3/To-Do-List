@@ -2,49 +2,43 @@
 import _ from 'lodash';
 import './style.css';
 
+import { list, SaveItem } from './modules/addRemoveItems.js';
+import listItems from './modules/createNewItems.js';
+
+const listForm = document.querySelector('#todo-form');
 const taskList = document.querySelector('.task-list');
+const taskCompleteButton = document.querySelector('.delete-tasks');
+const addItem = document.querySelector('#list-input');
 
-const taskArray = [
-  {
-    description: 'Pray',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Physical exercise',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Code',
-    completed: false,
-    index: 2,
-  },
-];
+listForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const itemSaved = new SaveItem();
+  itemSaved.addNew(addItem.value);
+  listForm.reset();
+});
 
-taskList.innerHTML = `
-  <article>
-    <h2>Today's To Do </h2>
-    <iconify-icon icon="bx:refresh"></iconify-icon>
-  </article>
-  <hr>
-  <form>
-    <input type="text" id="new-todo" class="no-outline" placeholder="Add to your list">
-    <button type="submit" id="add-todo" value><iconify-icon icon="uil:enter"></iconify-icon></button>
-  </form>
-  <hr>
-`;
+for (let i = 1; i <= list.length; i += 1) {
+  list.forEach((x) => {
+    if (x.index === i) {
+      listItems(x);
+    }
+  });
+}
 
-taskArray.forEach((task) => {
-  const toDoTask = document.createElement('li');
-  toDoTask.className = 'list-item';
-  toDoTask.innerHTML = `
-      <div class="list">
-        <input type="checkbox">
-        <label for="description" class="task-description">${task.description}</label>
-        <iconify-icon icon="ph:dots-three-outline-vertical-fill" class="dots"></iconify-icon>
-    <hr> 
-      </div
-      `;
-  taskList.appendChild(toDoTask);
+// clear all completed tasks
+taskCompleteButton.addEventListener('click', () => {
+  let todos = list.filter((element) => element.completed === false);
+
+  // update the index
+  let i = 1;
+  todos = todos.map((element) => {
+    element.index = i;
+    i += 1;
+    return element;
+  });
+  taskList.innerHTML = '';
+  todos.forEach((listItem, index) => {
+    listItems(listItem, index + 1);
+  });
+  localStorage.setItem('list', JSON.stringify(todos));
 });
