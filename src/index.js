@@ -7,7 +7,7 @@ import listItems from './modules/createNewItems.js';
 
 const listForm = document.querySelector('#todo-form');
 const taskList = document.querySelector('.task-list');
-const taskCompleteButton = document.querySelector('.delete-tasks');
+const taskCompleteButton = document.querySelector('#delete-tasks');
 const addItem = document.querySelector('#list-input');
 
 listForm.addEventListener('submit', (e) => {
@@ -25,11 +25,11 @@ for (let i = 1; i <= list.length; i += 1) {
   });
 }
 
-// clear all completed tasks
+// clear all completed fields
 taskCompleteButton.addEventListener('click', () => {
   let todos = list.filter((element) => element.completed === false);
 
-  // update the index
+  // to update the index
   let i = 1;
   todos = todos.map((element) => {
     element.index = i;

@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import { list, SaveItem } from './addRemoveItems.js';
 /* eslint-enable */
+import check from './checkBox.js';
 
 // create a list of items
 const listItems = (listItem, id) => {
@@ -31,7 +32,7 @@ const listItems = (listItem, id) => {
     const itemParent = event.target.parentNode.parentNode;
     itemParent.querySelector('.fa-trash-can').parentNode.style.display = 'block';
     button.style.display = 'none';
-    li.style.background = '#f7cee9';
+    li.style.background = '#f7ce';
     // to edit text
     text.disabled = false;
     text.focus();
@@ -70,6 +71,16 @@ const listItems = (listItem, id) => {
     checkbox.checked = true;
     text.style.textDecoration = 'line-through';
   }
+  let x = {};
+  list.forEach((element) => {
+    if (element.index === listItem.index) {
+      x = element;
+    }
+  });
+  checkbox.addEventListener('click', (event) => {
+    check(event, x, text, list);
+    localStorage.setItem('list', JSON.stringify(list));
+  });
 };
 
 export default listItems;

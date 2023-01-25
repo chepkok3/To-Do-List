@@ -62,6 +62,5 @@ class SaveItem {
 }
 
 export { list, SaveItem };
-//module.exports
 
 /* eslint-enable */

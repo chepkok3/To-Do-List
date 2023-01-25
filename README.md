@@ -68,13 +68,14 @@ Install this project with:
 
 - **[To install locally run git clone]**
 - **[Open the cloned directory with VS Code]**
-- **[Install live server extension for VS Code]**
-- **[Right click on the index.html and select open with live servers]**
+- **[Npm install]**
 
 ### Usage
 
 To run the project, execute the following command:
 
+- **[Run npm install]**
+- **[Npm start to open the project on the browser]**
 - **[Click the "Go Live" button on your source-code editor ]**
 
 ### Deployment
