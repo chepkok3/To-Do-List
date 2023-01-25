@@ -2,30 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List | Stanley</title>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
-    <script
-      src="https://kit.fontawesome.com/a1e854484d.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
-    <script defer src="main.js"></script>
+    <title>Stanley | To Do List</title>
   </head>
   <body>
-    <main class="main-content">
-      <section class="to-do">
-        <div class="todo-container">
-          <ul class="task-list"></ul>
-          <div class="completed">
-            <button class="delete-tasks">Clear all completed</button>
-          </div>
+    <main>
+      <section id="main-content">
+        <header class="todo-header">
+          <h1>Today's To Do</h1>
+          <button class="arrow-rotate">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </button>
+        </header>
+
+        <!-- Add to your list  -->
+        <form id="todo-form">
+          <input
+            type="text"
+            id="list-input"
+            name="list-input"
+            placeholder="Add your list..."
+          /><button
+            class="input-btn"
+            aria-label="add new task"
+            title="hit enter to submit task"
+          >
+            <i class="fa fa-arrow-turn-down"></i>
+          </button>
+        </form>
+
+        <!-- To do list will be placed here-->
+        <ul class="task-list"></ul>
+
+        <!-- completed button will be placed here-->
+        <div id="btn">
+          <button type="button" id="delete-tasks">Clear all completed</button>
         </div>
       </section>
     </main>
