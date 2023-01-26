@@ -7,19 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
     "server": "node server.js",
-    "build": "webpack build"
+    "build": "webpack build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chepkok3/To-Do-ist.git"
+    "url": "git+https://github.com/chepkok3/To-Do-List.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Stanley Kibor",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chepkok3/To-Do-ist/issues"
+    "url": "https://github.com/chepkok3/To-Do-List/issues"
   },
-  "homepage": "https://github.com/chepkok3/To-Do-ist#readme",
+  "homepage": "https://github.com/chepkok3/To-Do-List#readme",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
@@ -43,6 +45,7 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
+    "gh-pages": "^5.0.0",
     "graceful-fs": "^4.2.10",
     "lodash": "^4.17.21",
     "stream-browserify": "^3.0.0",
