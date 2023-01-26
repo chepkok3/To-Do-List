@@ -1,4 +1,12 @@
-* {
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
@@ -34,13 +42,13 @@ button {
 }
 
 #main-content {
-  max-width: 500px;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 100px auto;
   background: #fff;
-  box-shadow: 0 4px 20px 0 rgba(168, 168, 168, 0.54);
+  box-shadow: 0 4px 20px 0 rgba(168, 168, 168, 0.588);
+  max-width: 700px;
 }
 
 .todo-header {
@@ -79,17 +87,18 @@ ul li {
   align-items: center;
 }
 
-.check-list {
+.check-item {
   margin-right: 15px;
 }
 
-#btn {
+#button {
   padding: 15px 13px;
   text-align: center;
   background: #f0f0f0;
+  height: 4rem;
 }
 
-#btn #delete-tasks {
+#button #delete-tasks {
   color: #4b4848;
   font-size: 16px;
 }
