@@ -10,7 +10,7 @@ class SaveItem {
     this.index = index;
   }
 
-  // add new Item
+  // code for adding new task
   addNew(newTodo) {
     this.description = newTodo;
     this.index = list.length + 1;
@@ -23,7 +23,7 @@ class SaveItem {
     listItems(this, list.length + 1);
   }
 
-  // remove Item
+  // code for removing added task
   removeItem(index) {
     list = list.filter((element) => element.index !== index);
     localStorage.setItem('list', JSON.stringify(list));
@@ -33,7 +33,7 @@ class SaveItem {
     this.displaytodos();
   }
 
-  // display items after delete
+  // show tasks after deleting
   displaytodos = () => {
     list.forEach((listObj, index) => {
       listItems(listObj, index + 1);
@@ -41,7 +41,7 @@ class SaveItem {
     localStorage.setItem('list', JSON.stringify(list));
   };
 
-  // update Index
+  //  code for updating index
   updateIndex = () => {
     list = list.map((element, index) => {
       element.index = index + 1;
@@ -50,7 +50,7 @@ class SaveItem {
     localStorage.setItem('list', JSON.stringify(list));
   };
 
-  // edit text Item
+  // code for editing tasks
   editItem = (id, text) => {
     list.forEach((element) => {
       if (element.index === id) {

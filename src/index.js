@@ -25,11 +25,11 @@ for (let i = 1; i <= list.length; i += 1) {
   });
 }
 
-// clear all completed fields
+// clear all completed tasks
 taskCompleteButton.addEventListener('click', () => {
   let todos = list.filter((element) => element.completed === false);
 
-  // to update the index
+  // code for updating index
   let i = 1;
   todos = todos.map((element) => {
     element.index = i;
