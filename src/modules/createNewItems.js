@@ -3,7 +3,7 @@ import { list, SaveItem } from './addRemoveItems.js';
 /* eslint-enable */
 import check from './checkBox.js';
 
-// create a list of items
+// create a list of tasks
 const listItems = (listItem, id) => {
   const taskList = document.querySelector('.task-list');
   const li = document.createElement('li');
@@ -33,13 +33,13 @@ const listItems = (listItem, id) => {
     itemParent.querySelector('.fa-trash-can').parentNode.style.display = 'block';
     button.style.display = 'none';
     li.style.background = '#f7ce';
-    // to edit text
+    // text edit
     text.disabled = false;
     text.focus();
   });
   li.appendChild(button);
 
-  // delete button
+  // delete button code
   const deleteButton = document.createElement('button');
   deleteButton.setAttribute('type', 'button');
   deleteButton.innerHTML = `
@@ -53,7 +53,7 @@ const listItems = (listItem, id) => {
   });
   li.appendChild(deleteButton);
 
-  // edit text Item
+  // ode for editing tasks
   text.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       text.placeholder = text.value;
