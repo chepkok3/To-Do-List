@@ -1,18 +1,17 @@
 /* eslint-disable */
-import listItems from './createNewItems.js';
+import itemsList from './createNewItems.js';
 
 let list = JSON.parse(localStorage.getItem('list')) || [];
 
-class SaveItem {
+class ItemSaved {
   constructor(description, completed = false, index) {
     this.description = description;
     this.completed = completed;
     this.index = index;
   }
 
-  // code for adding new task
-  addNew(newTodo) {
-    this.description = newTodo;
+  newItem(newToDo) {
+    this.description = newToDo;
     this.index = list.length + 1;
     list.push({
       description: this.description,
@@ -20,29 +19,29 @@ class SaveItem {
       index: this.index,
     });
     localStorage.setItem('list', JSON.stringify(list));
-    listItems(this, list.length + 1);
+    itemsList(this, list.length + 1);
   }
 
   // code for removing added task
-  removeItem(index) {
+  removeTask(index) {
     list = list.filter((element) => element.index !== index);
     localStorage.setItem('list', JSON.stringify(list));
     const taskList = document.querySelector('.task-list');
     taskList.innerHTML = '';
-    this.updateIndex();
-    this.displaytodos();
+    this.indexUpdate();
+    this.showlist();
   }
 
   // show tasks after deleting
-  displaytodos = () => {
-    list.forEach((listObj, index) => {
-      listItems(listObj, index + 1);
+  showlist = () => {
+    list.forEach((itemObj, index) => {
+      itemsList(itemObj, index + 1);
     });
     localStorage.setItem('list', JSON.stringify(list));
   };
 
   //  code for updating index
-  updateIndex = () => {
+  indexUpdate = () => {
     list = list.map((element, index) => {
       element.index = index + 1;
       return element;
@@ -61,6 +60,6 @@ class SaveItem {
   };
 }
 
-export { list, SaveItem };
+export { list, ItemSaved };
 
 /* eslint-enable */

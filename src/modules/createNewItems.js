@@ -1,25 +1,25 @@
 /*eslint-disable*/
-import { list, SaveItem } from './addRemoveItems.js';
+import { list, ItemSaved } from './addRemoveItems.js';
 /* eslint-enable */
-import check from './checkBox.js';
+import itemCheck from './checkBox.js';
 
 // create a list of tasks
-const listItems = (listItem, id) => {
+const itemsList = (itemList, id) => {
   const taskList = document.querySelector('.task-list');
   const li = document.createElement('li');
   taskList.appendChild(li);
   const div = document.createElement('div');
-  div.classList.add('list-container');
+  div.classList.add('items-container');
   li.appendChild(div);
 
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
-  checkbox.classList.add('check-list');
+  checkbox.classList.add('check-item');
   div.appendChild(checkbox);
 
   const text = document.createElement('input');
   text.setAttribute('type', 'text');
-  text.setAttribute('placeholder', listItem.description);
+  text.setAttribute('placeholder', itemList.description);
   text.setAttribute('disabled', '');
   div.appendChild(text);
 
@@ -28,18 +28,16 @@ const listItems = (listItem, id) => {
   button.innerHTML = `
     <i class="fa fa-ellipsis-vertical"></i>`;
 
-  button.addEventListener('click', (event) => {
-    const itemParent = event.target.parentNode.parentNode;
+  button.addEventListener('click', (e) => {
+    const itemParent = e.target.parentNode.parentNode;
     itemParent.querySelector('.fa-trash-can').parentNode.style.display = 'block';
-    button.style.display = 'none';
     li.style.background = '#f7ce';
-    // text edit
+    button.style.display = 'none';
     text.disabled = false;
     text.focus();
   });
   li.appendChild(button);
 
-  // delete button code
   const deleteButton = document.createElement('button');
   deleteButton.setAttribute('type', 'button');
   deleteButton.innerHTML = `
@@ -48,39 +46,37 @@ const listItems = (listItem, id) => {
 
   deleteButton.id = id;
   deleteButton.addEventListener('click', () => {
-    const deleteItem = new SaveItem();
-    deleteItem.removeItem(id);
+    const deleteItem = new ItemSaved();
+    deleteItem.removeTask(id);
   });
   li.appendChild(deleteButton);
 
-  // ode for editing tasks
-  text.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
+  text.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
       text.placeholder = text.value;
       button.style.display = 'flex';
       deleteButton.style.display = 'none';
       text.disabled = true;
       li.style.background = 'none';
-      const Item = new SaveItem();
+      const Item = new ItemSaved();
       Item.editItem(id, text.value);
     }
   });
 
-  // checkbox event listener
-  if (listItem.completed) {
+  if (itemList.completed) {
     checkbox.checked = true;
     text.style.textDecoration = 'line-through';
   }
-  let x = {};
+  let lis = {};
   list.forEach((element) => {
-    if (element.index === listItem.index) {
-      x = element;
+    if (element.index === itemList.index) {
+      lis = element;
     }
   });
-  checkbox.addEventListener('click', (event) => {
-    check(event, x, text, list);
+  checkbox.addEventListener('click', (e) => {
+    itemCheck(e, lis, text, list);
     localStorage.setItem('list', JSON.stringify(list));
   });
 };
 
-export default listItems;
+export default itemsList;
