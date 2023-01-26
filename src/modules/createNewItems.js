@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { list, itemSaved } from './addRemoveItems.js';
+import { list, ItemSaved } from './addRemoveItems.js';
 /* eslint-enable */
 import itemCheck from './checkBox.js';
 
@@ -30,8 +30,7 @@ const itemsList = (itemList, id) => {
 
   button.addEventListener('click', (e) => {
     const itemParent = e.target.parentNode.parentNode;
-    itemParent.querySelector('.fa-trash-can').parentNode.style.display =
-      'block';
+    itemParent.querySelector('.fa-trash-can').parentNode.style.display = 'block';
     li.style.background = '#f7ce';
     button.style.display = 'none';
     text.disabled = false;
@@ -47,7 +46,7 @@ const itemsList = (itemList, id) => {
 
   deleteButton.id = id;
   deleteButton.addEventListener('click', () => {
-    const deleteItem = new itemSaved();
+    const deleteItem = new ItemSaved();
     deleteItem.removeTask(id);
   });
   li.appendChild(deleteButton);
@@ -59,7 +58,7 @@ const itemsList = (itemList, id) => {
       deleteButton.style.display = 'none';
       text.disabled = true;
       li.style.background = 'none';
-      const Item = new itemSaved();
+      const Item = new ItemSaved();
       Item.editItem(id, text.value);
     }
   });

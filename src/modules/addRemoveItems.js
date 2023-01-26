@@ -3,7 +3,7 @@ import itemsList from './createNewItems.js';
 
 let list = JSON.parse(localStorage.getItem('list')) || [];
 
-class itemSaved {
+class ItemSaved {
   constructor(description, completed = false, index) {
     this.description = description;
     this.completed = completed;
@@ -60,6 +60,6 @@ class itemSaved {
   };
 }
 
-export { list, itemSaved };
+export { list, ItemSaved };
 
 /* eslint-enable */

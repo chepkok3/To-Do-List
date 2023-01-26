@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import './style.css';
 
-import { list, itemSaved } from './modules/addRemoveItems.js';
+import { list, ItemSaved } from './modules/addRemoveItems.js';
 import itemsList from './modules/createNewItems.js';
 
 const listForm = document.querySelector('#todo-form');
@@ -38,7 +38,7 @@ taskCompleteButton.addEventListener('click', () => {
 
 listForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const savedTask = new itemSaved();
+  const savedTask = new ItemSaved();
   savedTask.newItem(addTask.value);
   listForm.reset();
 });
