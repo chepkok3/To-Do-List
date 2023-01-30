@@ -10,6 +10,13 @@ const taskList = document.querySelector('.task-list');
 const taskCompleteButton = document.querySelector('#delete-tasks');
 const addTask = document.querySelector('#list-input');
 
+listForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const savedTask = new ItemSaved();
+  savedTask.newItem(addTask.value);
+  listForm.reset();
+});
+
 for (let i = 1; i <= list.length; i += 1) {
   list.forEach((lis) => {
     if (lis.index === i) {
@@ -29,16 +36,10 @@ taskCompleteButton.addEventListener('click', () => {
     i += 1;
     return element;
   });
+
   taskList.innerHTML = '';
   dolist.forEach((itemList, index) => {
     itemList(itemList, index + 1);
   });
   localStorage.setItem('list', JSON.stringify(dolist));
-});
-
-listForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const savedTask = new ItemSaved();
-  savedTask.newItem(addTask.value);
-  listForm.reset();
 });
