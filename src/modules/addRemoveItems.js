@@ -10,7 +10,7 @@ class ItemSaved {
     this.index = index;
   }
 
-  newItem(newToDo) {
+  newItem(newToDo, includeItemsList = true) {
     this.description = newToDo;
     this.index = list.length + 1;
     list.push({
@@ -19,17 +19,22 @@ class ItemSaved {
       index: this.index,
     });
     localStorage.setItem('list', JSON.stringify(list));
-    itemsList(this, list.length + 1);
+    if (includeItemsList) {
+      itemsList(this, list.length + 1);
+    }
   }
 
+
   // code for removing added task
-  removeTask(index) {
+  removeTask(index, includefunctionItem = true ) {
     list = list.filter((element) => element.index !== index);
     localStorage.setItem('list', JSON.stringify(list));
     const taskList = document.querySelector('.task-list');
-    taskList.innerHTML = '';
     this.indexUpdate();
-    this.showlist();
+    if (includefunctionItem){
+      taskList.innerHTML = '';
+      this.showlist();
+    }
   }
 
   // show tasks after deleting
