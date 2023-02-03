@@ -4,7 +4,7 @@ import './style.css';
 
 import { list, ItemSaved } from './modules/addRemoveItems.js';
 import itemsList from './modules/createNewItems.js';
-import { clearTodos } from './modules/test/checkbox.js';
+import { clearTodos } from './test/checkbox.js';
 
 const listForm = document.querySelector('#todo-form');
 const taskList = document.querySelector('.task-list');
@@ -28,5 +28,5 @@ for (let i = 1; i <= list.length; i += 1) {
 
 // clear all completed tasks
 taskCompleteButton.addEventListener('click', () => {
-  clearTodos(list, taskList, itemList);
+  clearTodos(list, taskList, itemsList);
 });

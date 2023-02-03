@@ -3,8 +3,6 @@ import { list, ItemSaved } from './addremove.js';
 /* eslint-enable */
 import { itemCheck } from './checkbox.js';
 
-const taskList = document.querySelector('.task-list');
-
 // create a list of tasks
 const itemsList = (itemList, id) => {
   const taskList = document.querySelector('.task-list');
@@ -77,7 +75,7 @@ const itemsList = (itemList, id) => {
       lis = element;
     }
   });
-  checkbox.addEventListener('click', (e) => {
+  checkbox.addEventListener('click', () => {
     itemCheck(lis, text, list);
     localStorage.setItem('list', JSON.stringify(list));
   });
