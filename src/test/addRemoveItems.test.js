@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { ItemSaved } from './src/modules/addRemoveItems.js';
+import { ItemSaved } from '../modules/addRemoveItems.js';
 
 describe('ItemSaved class', () => {
   test('adds a new item to the list', () => {
