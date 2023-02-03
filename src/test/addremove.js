@@ -1,5 +1,5 @@
 /* eslint-disable */
-import itemsList from './createNewItems.js';
+import itemsList from './createitems';
 
 let list = JSON.parse(localStorage.getItem('list')) || [];
 
